@@ -12,11 +12,7 @@ import styled from 'styled-components';
 import { CollectiveType } from '../../lib/constants/collectives';
 import { getGQLV2FrequencyFromInterval } from '../../lib/constants/intervals';
 import { MODERATION_CATEGORIES_ALIASES } from '../../lib/constants/moderation-categories';
-import {
-  GQLV2_PAYMENT_METHOD_LEGACY_TYPES,
-  PAYMENT_METHOD_SERVICE,
-  PAYMENT_METHOD_TYPE,
-} from '../../lib/constants/payment-methods';
+import { PAYMENT_METHOD_SERVICE, PAYMENT_METHOD_TYPE } from '../../lib/constants/payment-methods';
 import { TierTypes } from '../../lib/constants/tiers-types';
 import { TransactionTypes } from '../../lib/constants/transactions';
 import { formatCurrency } from '../../lib/currency-utils';
@@ -339,13 +335,7 @@ class ContributionFlow extends React.Component {
       paymentMethod.creditCardInfo = { token: pm.token, ...pm.data };
 
       // PayPal
-    } else if (
-      // TODO(paymentMethodType): remove deprecated form
-      // Deprecated form
-      stepPayment.paymentMethod.providerType === GQLV2_PAYMENT_METHOD_LEGACY_TYPES.PAYPAL ||
-      // Future proof form (no need to convert to uppercase here)
-      stepPayment.paymentMethod.service === PAYMENT_METHOD_SERVICE.PAYPAL
-    ) {
+    } else if (stepPayment.paymentMethod.service === PAYMENT_METHOD_SERVICE.PAYPAL) {
       paymentMethod.paypalInfo = pick(stepPayment.paymentMethod.paypalInfo, [
         'token',
         'data',
@@ -455,10 +445,6 @@ class ContributionFlow extends React.Component {
         stepPayment: {
           key: 'crypto',
           paymentMethod: {
-            // TODO(paymentMethodType): remove deprecated form
-            // Deprecated but current form
-            providerType: GQLV2_PAYMENT_METHOD_LEGACY_TYPES.CRYPTO,
-            // Future proof form
             service: PAYMENT_METHOD_SERVICE.THEGIVINGBLOCK,
             type: PAYMENT_METHOD_TYPE.CRYPTO,
           },
@@ -652,13 +638,7 @@ class ContributionFlow extends React.Component {
 
   getPaypalButtonProps({ currency }) {
     const { stepPayment, stepDetails, stepSummary } = this.state;
-    if (
-      // TODO(paymentMethodType): remove deprecated form
-      // Deprecated but current form
-      stepPayment?.paymentMethod?.providerType === GQLV2_PAYMENT_METHOD_LEGACY_TYPES.PAYPAL ||
-      // Future proof form (no need to convert to uppercase here)
-      stepPayment?.paymentMethod?.service === PAYMENT_METHOD_SERVICE.PAYPAL
-    ) {
+    if (stepPayment?.paymentMethod?.service === PAYMENT_METHOD_SERVICE.PAYPAL) {
       const { host, collective, tier } = this.props;
       return {
         host: host,
@@ -678,10 +658,6 @@ class ContributionFlow extends React.Component {
               stepPayment: {
                 ...state.stepPayment,
                 paymentMethod: {
-                  // TODO(paymentMethodType): remove deprecated form
-                  // Deprecated but current form
-                  providerType: GQLV2_PAYMENT_METHOD_LEGACY_TYPES.PAYPAL,
-                  // Future proof form
                   service: PAYMENT_METHOD_SERVICE.PAYPAL,
                   type: PAYMENT_METHOD_TYPE.PAYMENT,
                   paypalInfo: { isNewApi: true, ...paypalInfo },
