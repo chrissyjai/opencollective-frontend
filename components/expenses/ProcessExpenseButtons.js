@@ -18,6 +18,7 @@ import { TOAST_TYPE, useToasts } from '../ToastProvider';
 import { useUser } from '../UserProvider';
 
 import { expensePageExpenseFieldsFragment } from './graphql/fragments';
+import DeleteExpenseButton from './DeleteExpenseButton';
 import MarkExpenseAsUnpaidButton from './MarkExpenseAsUnpaidButton';
 import PayExpenseButton from './PayExpenseButton';
 
@@ -234,6 +235,7 @@ const ProcessExpenseButtons = ({ expense, collective, host, permissions, buttonP
           }
         />
       )}
+      {permissions.canDelete && <DeleteExpenseButton buttonProps={getButtonProps()} expense={expense} />}
     </React.Fragment>
   );
 };
@@ -247,6 +249,7 @@ ProcessExpenseButtons.propTypes = {
     canPay: PropTypes.bool,
     canMarkAsUnpaid: PropTypes.bool,
     canUnschedulePayment: PropTypes.bool,
+    canDelete: PropTypes.bool,
   }).isRequired,
   expense: PropTypes.shape({
     id: PropTypes.string,
