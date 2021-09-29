@@ -244,7 +244,11 @@ interface Account {
     The offset to use to fetch
     """
     offset: Int! = 0
-    onlyPublishedUpdates: Boolean
+
+    """
+    Only return published updates. You must be an admin of the account to see unpublished updates.
+    """
+    onlyPublishedUpdates: Boolean = false
     onlyChangelogUpdates: Boolean
     orderBy: ChronologicalOrderInput! = { field: CREATED_AT, direction: DESC }
     searchTerm: String
@@ -825,7 +829,11 @@ type Bot implements Account {
     The offset to use to fetch
     """
     offset: Int! = 0
-    onlyPublishedUpdates: Boolean
+
+    """
+    Only return published updates. You must be an admin of the account to see unpublished updates.
+    """
+    onlyPublishedUpdates: Boolean = false
     onlyChangelogUpdates: Boolean
     orderBy: ChronologicalOrderInput! = { field: CREATED_AT, direction: DESC }
     searchTerm: String
@@ -1125,7 +1133,11 @@ type Collective implements Account & AccountWithHost & AccountWithContributions 
     The offset to use to fetch
     """
     offset: Int! = 0
-    onlyPublishedUpdates: Boolean
+
+    """
+    Only return published updates. You must be an admin of the account to see unpublished updates.
+    """
+    onlyPublishedUpdates: Boolean = false
     onlyChangelogUpdates: Boolean
     orderBy: ChronologicalOrderInput! = { field: CREATED_AT, direction: DESC }
     searchTerm: String
@@ -3481,7 +3493,11 @@ type Event implements Account & AccountWithHost & AccountWithContributions {
     The offset to use to fetch
     """
     offset: Int! = 0
-    onlyPublishedUpdates: Boolean
+
+    """
+    Only return published updates. You must be an admin of the account to see unpublished updates.
+    """
+    onlyPublishedUpdates: Boolean = false
     onlyChangelogUpdates: Boolean
     orderBy: ChronologicalOrderInput! = { field: CREATED_AT, direction: DESC }
     searchTerm: String
@@ -4474,7 +4490,11 @@ type Fund implements Account & AccountWithHost & AccountWithContributions {
     The offset to use to fetch
     """
     offset: Int! = 0
-    onlyPublishedUpdates: Boolean
+
+    """
+    Only return published updates. You must be an admin of the account to see unpublished updates.
+    """
+    onlyPublishedUpdates: Boolean = false
     onlyChangelogUpdates: Boolean
     orderBy: ChronologicalOrderInput! = { field: CREATED_AT, direction: DESC }
     searchTerm: String
@@ -4843,7 +4863,11 @@ type Host implements Account & AccountWithContributions {
     The offset to use to fetch
     """
     offset: Int! = 0
-    onlyPublishedUpdates: Boolean
+
+    """
+    Only return published updates. You must be an admin of the account to see unpublished updates.
+    """
+    onlyPublishedUpdates: Boolean = false
     onlyChangelogUpdates: Boolean
     orderBy: ChronologicalOrderInput! = { field: CREATED_AT, direction: DESC }
     searchTerm: String
@@ -5480,7 +5504,11 @@ type Individual implements Account {
     The offset to use to fetch
     """
     offset: Int! = 0
-    onlyPublishedUpdates: Boolean
+
+    """
+    Only return published updates. You must be an admin of the account to see unpublished updates.
+    """
+    onlyPublishedUpdates: Boolean = false
     onlyChangelogUpdates: Boolean
     orderBy: ChronologicalOrderInput! = { field: CREATED_AT, direction: DESC }
     searchTerm: String
@@ -7179,7 +7207,11 @@ type Organization implements Account & AccountWithContributions {
     The offset to use to fetch
     """
     offset: Int! = 0
-    onlyPublishedUpdates: Boolean
+
+    """
+    Only return published updates. You must be an admin of the account to see unpublished updates.
+    """
+    onlyPublishedUpdates: Boolean = false
     onlyChangelogUpdates: Boolean
     orderBy: ChronologicalOrderInput! = { field: CREATED_AT, direction: DESC }
     searchTerm: String
@@ -7762,7 +7794,11 @@ type Project implements Account & AccountWithHost & AccountWithContributions {
     The offset to use to fetch
     """
     offset: Int! = 0
-    onlyPublishedUpdates: Boolean
+
+    """
+    Only return published updates. You must be an admin of the account to see unpublished updates.
+    """
+    onlyPublishedUpdates: Boolean = false
     onlyChangelogUpdates: Boolean
     orderBy: ChronologicalOrderInput! = { field: CREATED_AT, direction: DESC }
     searchTerm: String
@@ -9168,7 +9204,11 @@ type Vendor implements Account & AccountWithHost & AccountWithContributions {
     The offset to use to fetch
     """
     offset: Int! = 0
-    onlyPublishedUpdates: Boolean
+
+    """
+    Only return published updates. You must be an admin of the account to see unpublished updates.
+    """
+    onlyPublishedUpdates: Boolean = false
     onlyChangelogUpdates: Boolean
     orderBy: ChronologicalOrderInput! = { field: CREATED_AT, direction: DESC }
     searchTerm: String
