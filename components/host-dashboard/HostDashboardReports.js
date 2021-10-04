@@ -133,9 +133,7 @@ const HostDashboardReports = ({ hostSlug }) => {
           <SectionTitle>
             <FormattedMessage id="Host.FeesCollective" defaultMessage="Host fees (collected)" />
           </SectionTitle>
-          <StyledCard minHeight={200}>
-            <HostFeesSection hostSlug={hostSlug} />
-          </StyledCard>
+          <HostFeesSection hostSlug={hostSlug} />
         </Container>
         <Container mb={38}>
           <SectionTitle>
